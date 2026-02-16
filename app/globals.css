@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 50% 2%;
+    --foreground: 0 0% 100%;
+    --card: 215 50% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 215 50% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 46 65% 52%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 215 20% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 20% 15%;
+    --muted-foreground: 215 15% 55%;
+    --accent: 46 65% 52%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 20% 15%;
+    --input: 215 20% 15%;
+    --ring: 46 65% 52%;
+    --chart-1: 46 65% 52%;
+    --chart-2: 260 60% 50%;
+    --chart-3: 330 70% 50%;
+    --chart-4: 215 80% 50%;
+    --chart-5: 120 60% 45%;
+    --radius: 0.5rem;
+    --sidebar-background: 215 50% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 46 65% 52%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 215 20% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 215 20% 15%;
+    --sidebar-ring: 48 96% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ====== Custom Animations ====== */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes scanline-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    height: 0%;
+  }
+  to {
+    height: var(--bar-h);
+  }
+}
+
+@keyframes gauge-fill {
+  from {
+    stroke-dashoffset: 220;
+  }
+  to {
+    stroke-dashoffset: var(--gauge-offset, 44);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    filter: blur(120px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(100px);
+  }
+}
+
+@keyframes hud-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.6; }
+  94% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-scanline-sweep {
+  animation: scanline-sweep 8s linear infinite;
+}
+
+.animate-data-stream {
+  animation: data-stream 3s ease-in-out infinite;
+}
+
+.animate-bar-grow {
+  animation: bar-grow 1.5s ease-out forwards;
+}
+
+.animate-gauge-fill {
+  animation: gauge-fill 2s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+.animate-hud-flicker {
+  animation: hud-flicker 5s ease-in-out infinite;
+}
+
+/* Perspective & 3D Helpers */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--accent) / 0.5);
+  color: white;
+}
